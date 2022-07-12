@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction:column;
+            align-items:center
+        }
+        ol {
+            border: 2px solid red;
+            padding: 20px;
+            display: inline-block;
+            width:min(400px,50%);
+         
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Course</th>
+            </thead>
+            <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.roll}}</td>
+                <td>{{student.course}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

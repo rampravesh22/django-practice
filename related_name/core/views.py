@@ -6,10 +6,8 @@ print("********************************************************")
 print()
 
 
-subject = Subject.objects.get(id=1)
-# print(student.values())
-# print(student.course.all().values())
-print(subject.student.all())
+subject = Subject.objects.get(id=3)
+print(subject.student.all().values())
 
 print()
 print("********************************************************")

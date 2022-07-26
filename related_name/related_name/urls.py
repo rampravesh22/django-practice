@@ -18,5 +18,7 @@ from django.urls import path
 from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.home)
+    path("", views.home),
+    path("show/<int:id>/", views.show, name="show"),
+    path("delete/<int:id>/", views.delete, name="delete"),
 ]

@@ -1,28 +1,63 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <link rel="stylesheet" href="{% static 'core.css' %}">
 
-        h1{
-            animation: hello 1s ease 100ms 1 normal backwords;
-        }
-        @keyframes hello {
-            0%{
-                color:red;
-            }
-            100%{
-                black
-                font-size:100px
-            }
-    
-        }
-    </style>
 </head>
+
 <body>
-    <h1>Successfully executed !!</h1>
+    <center>
+        <h1>All Students</h1>
+    </center>
+    <table>
+
+        <head>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>View Details</th>
+                <th>Delete</th>
+            </tr>
+        </head>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.student_name}}</td>
+                <td class="center"><a href="{% url 'show' student.id %}">View</a></td>
+                <td class="center"><a href="{% url 'delete' student.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+    <h2>Add new student</h2>
+    {% if student %}
+    <h2>Details of : {{student.student_name}}</h2>
+    <hr>
+    <h3>Section: {{student.section.section_name}}</h3>
+    <h3>Courses</h3>
+    <ol>
+        {% for course in student.course.all %}
+        <li>{{ course.course_name }}</li>
+        {% endfor %}
+    </ol>
+    <h3>Subjects</h3>
+    <ol>
+        {% for sub in student.subject.all %}
+        <li>{{ sub.subject_name }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
 </body>
+
+
+
 </html>

@@ -1,0 +1,54 @@
+h1 {
+    animation: heading 4s linear infinite alternate;
+}
+
+@keyframes heading {
+    0% {}
+
+    100% {
+        letter-spacing: 12px;
+    }
+}
+
+
+
+a {
+    text-decoration: none;
+    border: 2px solid black;
+    color: black;
+    padding: 2px 4px;
+    border-radius: 5px;
+    background-color: rgb(48, 255, 158);
+    position: relative;
+    left: 30%;
+    transition: all 200ms;
+
+
+}
+
+a:hover {
+    background-color: aliceblue;
+}
+
+table {
+    border-collapse: collapse;
+    padding: 12px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+
+thead {
+    background-color: red !important;
+    border: 4px solid red;
+}
+
+tr,
+th,
+td {
+    border: 1px solid;
+    padding: 6px;
+}

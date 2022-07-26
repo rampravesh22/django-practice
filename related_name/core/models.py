@@ -24,9 +24,18 @@ class Section(models.Model):
 
 
 class Course(models.Model):
+    course_choices = (
+        ("Python", "Python"),
+        ("Java", "Java"),
+        ("Django Framework", "Django Framework"),
+        ("Golang", "Golang"),
+        ("Machine Learning", "Machine Learning"),
+        ("DBMS", "DBMS"),
+    )
     student = models.ForeignKey(
         Student, on_delete=models.CASCADE, related_name="course")
-    course_name = models.CharField(max_length=100, default="")
+    course_name = models.CharField(
+        max_length=100, default="", choices=course_choices)
 
 
 class Subject(models.Model):

@@ -38,23 +38,26 @@
         </tbody>
 
     </table>
-    <h2>Click Here To add new student <a href="{% url 'addstudent' %}">Add</a> </h2>
+    <h2 class="click-here"> <a href="{% url 'addstudent' %}">Click Here To add new student</a> </h2>
+
     {% if student %}
-    <h2>Details of : {{student.student_name}}</h2>
-    <hr>
-    <h3>Section: {{student.section.section_name}}</h3>
-    <h3>Courses</h3>
-    <ol>
-        {% for course in student.course.all %}
-        <li>{{ course.course_name }}</li>
-        {% endfor %}
-    </ol>
-    <h3>Subjects</h3>
-    <ol>
-        {% for sub in student.subject.all %}
-        <li>{{ sub.subject_name }}</li>
-        {% endfor %}
-    </ol>
+    <div class="details">
+        <h2 class="name">Details of : <span>{{student.student_name}}</span></h2>
+        <hr>
+        <h3>Section: {{student.section.section_name}}</h3>
+        <h3>Courses</h3>
+        <ol>
+            {% for course in student.course.all %}
+            <li>{{ course.course_name }}</li>
+            {% endfor %}
+        </ol>
+        <h3>Subjects</h3>
+        <ol>
+            {% for sub in student.subject.all %}
+            <li>{{ sub.subject_name }}</li>
+            {% endfor %}
+        </ol>
+    </div>
     {% endif %}
 </body>
 

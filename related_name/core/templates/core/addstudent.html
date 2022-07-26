@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -6,11 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'core.css' %}">
 </head>
 
 <body>
-    <h2>Add new student</h2>
-    <div class="addnewstudent">
+    <div class="container">
+        <dic class="heading">
+            <h2>Add new student</h2>
+        </dic>
         <form action="" method="post">
             {% csrf_token %}
             <div class="form-input">
@@ -25,6 +29,15 @@
                     {% endfor %}
 
                 </select>
+            </div>
+            <div class="form-input">
+                <h2>Select Gender</h2>
+                <input type="radio" name="gender" value="female" id="male">
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="female" id="female">
+                <label for="male">Female</label>
+                <input type="radio" name="gender" value="other" id="other">
+                <label for="other">Other</label>
             </div>
             <div class="form-input">
                 <h3>Select Course</h3>

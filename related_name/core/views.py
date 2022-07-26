@@ -45,6 +45,7 @@ def addstudnet(request):
         section = request.POST.get('section')
         courses = request.POST.getlist('course')
         subjects = request.POST.getlist('subjects')
+        print("************************************************************")
         student = Student.objects.create(student_name=name)
 
         section = Section.objects.create(student=student, section_name=section)

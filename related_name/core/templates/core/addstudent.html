@@ -29,44 +29,24 @@
             <div class="form-input">
                 <h3>Select Course</h3>
                 <ol>
+                    {% for course in courses %}
                     <li>
-                        <label for="course">Machine Learning</label>
-                        <input type="checkbox" name="course" id="course" value="Machine Learning">
+                        <label for="course">{{course.course_name}}</label>
+                        <input type="checkbox" name="course" id="course" value="{{ course.course_name }}">
                     </li>
-                    <li>
-                        <label for="name">Golang</label>
-                        <input type="checkbox" name="course" id="course" value="Golang">
-                    </li>
-                    <li>
-                        <label for="name">Python</label>
-                        <input type="checkbox" name="course" id="course" value="Python">
-                    </li>
-                    <li>
-                        <label for="name">Django</label>
-                        <input type="checkbox" name="course" id="course" value="Django Framework">
-                    </li>
+                    {% endfor %}
+
                 </ol>
             </div>
             <div class="form-input">
                 <h3>Select Subjects</h3>
                 <ol>
+                    {% for subject in subjects %}
                     <li>
-                        <label for="subjects">Hindi</label>
-                        <input type="checkbox" name="subjects" id="subjects" value="Hindi">
+                        <label for="course">{{subject.subject_name}}</label>
+                        <input type="checkbox" name="course" id="course" value="{{ subject.subject_name}}">
                     </li>
-                    <li>
-                        <label for="subjects">English</label>
-                        <input type="checkbox" name="subjects" id="subjects" value="English">
-                    </li>
-                    <li>
-                        <label for="subjects">Physics</label>
-                        <input type="checkbox" name="subjects" id="subjects" value="Physics">
-
-                    </li>
-                    <li>
-                        <label for="subjects">Math</label>
-                        <input type="checkbox" name="subjects" id="subjects" value="Math">
-                    </li>
+                    {% endfor %}
                 </ol>
             </div>
             <input type="submit" value="Add Student">

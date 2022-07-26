@@ -41,15 +41,10 @@ def delete(request, id):
 
 def addstudnet(request):
     if request.method == "POST":
-        print("********************************************************")
         name = request.POST.get('name')
         section = request.POST.get('section')
         courses = request.POST.getlist('course')
         subjects = request.POST.getlist('subjects')
-        print(name)
-        print(section)
-        print(courses)
-        print(subjects)
         student = Student.objects.create(student_name=name)
 
         section = Section.objects.create(student=student, section_name=section)
@@ -60,7 +55,16 @@ def addstudnet(request):
                 Subject.objects.create(subject_name=subject))
 
         messages.success(request, "Student details added successfully")
-        print("********************************************************")
         return redirect(request.META.get('HTTP_REFERER'), context={"name": name})
+    sections = Section.objects.all()
+    courses = Course.objects.all()
+    subjects = Subject.objects.all()
+    print(courses.values())
 
-    return render(request, "core/addstudent.html")
+    context = {
+        "sections": sections,
+        "courses": courses,
+        "subjects": subjects,
+
+    }
+    return render(request, "core/addstudent.html", context)

@@ -20,10 +20,10 @@
             <div class="form-input">
                 <label for="section">Section</label>
                 <select name="section" id="section">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
+                    {% for section in sections %}
+                    <option value="{{ section }}">{{ section }}</option>
+                    {% endfor %}
+
                 </select>
             </div>
             <div class="form-input">
@@ -31,8 +31,8 @@
                 <ol>
                     {% for course in courses %}
                     <li>
-                        <label for="course">{{course.course_name}}</label>
-                        <input type="checkbox" name="course" id="course" value="{{ course.course_name }}">
+                        <label for="course">{{course}}</label>
+                        <input type="checkbox" name="course" id="course" value="{{ course }}">
                     </li>
                     {% endfor %}
 
@@ -43,8 +43,8 @@
                 <ol>
                     {% for subject in subjects %}
                     <li>
-                        <label for="course">{{subject.subject_name}}</label>
-                        <input type="checkbox" name="course" id="course" value="{{ subject.subject_name}}">
+                        <label for="course">{{subject}}</label>
+                        <input type="checkbox" name="course" id="course" value="{{ subject}}">
                     </li>
                     {% endfor %}
                 </ol>

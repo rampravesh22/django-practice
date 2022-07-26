@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Add new student</h2>
+    <div class="addnewstudent">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-input">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-input">
+                <label for="section">Section</label>
+                <select name="section" id="section">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-input">
+                <h3>Select Course</h3>
+                <ol>
+                    <li>
+                        <label for="course">Machine Learning</label>
+                        <input type="checkbox" name="course" id="course" value="Machine Learning">
+                    </li>
+                    <li>
+                        <label for="name">Golang</label>
+                        <input type="checkbox" name="course" id="course" value="Golang">
+                    </li>
+                    <li>
+                        <label for="name">Python</label>
+                        <input type="checkbox" name="course" id="course" value="Python">
+                    </li>
+                    <li>
+                        <label for="name">Django</label>
+                        <input type="checkbox" name="course" id="course" value="Django Framework">
+                    </li>
+                </ol>
+            </div>
+            <div class="form-input">
+                <h3>Select Subjects</h3>
+                <ol>
+                    <li>
+                        <label for="subjects">Hindi</label>
+                        <input type="checkbox" name="subjects" id="subjects" value="Hindi">
+                    </li>
+                    <li>
+                        <label for="subjects">English</label>
+                        <input type="checkbox" name="subjects" id="subjects" value="English">
+                    </li>
+                    <li>
+                        <label for="subjects">Physics</label>
+                        <input type="checkbox" name="subjects" id="subjects" value="Physics">
+
+                    </li>
+                    <li>
+                        <label for="subjects">Math</label>
+                        <input type="checkbox" name="subjects" id="subjects" value="Math">
+                    </li>
+                </ol>
+            </div>
+            <input type="submit" value="Add Student">
+        </form>
+    </div>
+
+    {% if messages %}
+    <hr>
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <a href=" {% url 'home' %} ">Home</a>
+
+
+</body>
+
+</html>

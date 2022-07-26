@@ -1,21 +1,15 @@
 from django.shortcuts import render, redirect
 from core.models import Course, Student, Section, Subject
+from django.contrib import messages
 # Create your views here.
-print("********************************************************")
-print("********************************************************")
-print()
 
 
 # student = Subject.objects.filter(student__student_name="Jatin")
 # print(student.values())
 
 
-print()
-print("********************************************************")
-print("********************************************************")
-
-
 def home(request):
+
     students = Student.objects.all()
     context = {
         'students': students,
@@ -43,3 +37,30 @@ def delete(request, id):
 
     }
     return redirect("/")
+
+
+def addstudnet(request):
+    if request.method == "POST":
+        print("********************************************************")
+        name = request.POST.get('name')
+        section = request.POST.get('section')
+        courses = request.POST.getlist('course')
+        subjects = request.POST.getlist('subjects')
+        print(name)
+        print(section)
+        print(courses)
+        print(subjects)
+        student = Student.objects.create(student_name=name)
+
+        section = Section.objects.create(student=student, section_name=section)
+        for course in courses:
+            Course.objects.create(student=student, course_name=course)
+        for subject in subjects:
+            student.subject.add(
+                Subject.objects.create(subject_name=subject))
+
+        messages.success(request, "Student details added successfully")
+        print("********************************************************")
+        return redirect(request.META.get('HTTP_REFERER'), context={"name": name})
+
+    return render(request, "core/addstudent.html")

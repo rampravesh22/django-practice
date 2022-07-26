@@ -12,7 +12,7 @@ class Student(models.Model):
 
 class Section(models.Model):
     student = models.OneToOneField(
-        Student, on_delete=models.CASCADE, related_name="section")
+        Student, on_delete=models.CASCADE, related_name="section",)
     select_section = (
         ("A", "A"),
         ("B", "B"),

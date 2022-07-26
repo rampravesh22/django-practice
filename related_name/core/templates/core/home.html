@@ -39,6 +39,65 @@
 
     </table>
     <h2>Add new student</h2>
+    <div class="addnewstudent">
+        <form action="" method="post">
+            <div class="form-input">
+                <label for="name">Name</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-input">
+                <label for="section">Section</label>
+                <select name="section" id="section">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-input">
+                <h3>Select Course</h3>
+                <ol>
+                    <li>
+                        <label for="course">Machine Learning</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                    <li>
+                        <label for="name">Deep Learning</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                    <li>
+                        <label for="name">Python</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                    <li>
+                        <label for="name">Django</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                </ol>
+            </div>
+            <div class="form-input">
+                <h3>Select Subjects</h3>
+                <ol>
+                    <li>
+                        <label for="course">Machine Learning</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                    <li>
+                        <label for="name">Deep Learning</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                    <li>
+                        <label for="name">Python</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                    <li>
+                        <label for="name">Django</label>
+                        <input type="checkbox" name="course" id="course">
+                    </li>
+                </ol>
+            </div>
+        </form>
+    </div>
     {% if student %}
     <h2>Details of : {{student.student_name}}</h2>
     <hr>

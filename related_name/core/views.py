@@ -56,10 +56,17 @@ def addstudnet(request):
 
         messages.success(request, "Student details added successfully")
         return redirect(request.META.get('HTTP_REFERER'), context={"name": name})
-    sections = Section.objects.all()
-    courses = Course.objects.all()
-    subjects = Subject.objects.all()
-    print(courses.values())
+    sections = ['A', 'B', "C", "D"]
+    courses = ("Python", "Java", "Django Framework",
+               "Golang", "Machine Learning", "DBMS",)
+    subjects = (
+        "Hindi",
+        "English",
+        "Math",
+        "Physics",
+        "Social Science",
+        "Chemistry",
+    )
 
     context = {
         "sections": sections,

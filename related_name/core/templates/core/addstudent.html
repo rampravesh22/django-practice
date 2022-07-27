@@ -33,26 +33,29 @@
             <h3>Select Course</h3>
             <ol>
                 {% for course in courses %}
-                <li>
-                    <label for="course">{{course}}</label>
-                    <input type="checkbox" name="course" id="course" value="{{ course }}">
+                <li class="d-flex justify-content-between w-50">
+                    <label for="course"><strong>{{ forloop.counter }}. </strong> {{course}}</label>
+                    <input type="checkbox" required name="course" id="course" value="{{ course }}">
                 </li>
                 {% endfor %}
 
             </ol>
         </div>
-        <div class="form-input">
+        <div class="form-input mt-5">
             <h3>Select Subjects</h3>
             <ol>
                 {% for subject in subjects %}
-                <li>
-                    <label for="course">{{subject}}</label>
-                    <input type="checkbox" name="course" id="course" value="{{ subject}}">
+                <li class="d-flex justify-content-between w-50">
+                    <label for="course"><strong>{{ forloop.counter }}.</strong> {{subject}}</label>
+                    <input type="checkbox" required name="course" id="course" value="{{ subject}}">
                 </li>
                 {% endfor %}
             </ol>
         </div>
-        <input type="submit" value="Add Student">
+        <button type="submit" class="d-flex justify-content-between align-content-center fw-bold rounded-2">Add
+            Student
+            <i class="fa-solid fa-circle-plus align-self-center">
+        </button>
     </form>
 </div>
 
@@ -64,5 +67,5 @@
     {% endfor %}
 </ul>
 {% endif %}
-<a href=" {% url 'home' %} ">Home</a>
+<a href=" {% url 'home' %} "><i class="fa-solid fa-house"></i></a>
 {% endblock content %}

@@ -5,17 +5,17 @@
     <h1>All Students</h1>
 </center>
 <div class="container-student">
-    <table>
+    <table class="table">
 
         <head>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>View Details</th>
-                <th>Delete</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">View</th>
+                <th scope="col">Delete</th>
             </tr>
         </head>
-        <tbody>
+        <tbody class="table-group-divider">
             {% for student in students %}
             <tr>
                 <td>{{student.id}}</td>
@@ -32,7 +32,6 @@
 
     </a>
 </h2>
-<i class="fa-solid fa-house"></i>
 
 {% if student %}
 <div class="details">

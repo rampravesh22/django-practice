@@ -1,82 +1,68 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
+{% extends 'core/base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'core.css' %}">
-</head>
+<div class="container">
+    <dic class="heading">
+        <h2>Add new student</h2>
+    </dic>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-input">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="form-input">
+            <label for="section">Section</label>
+            <select name="section" id="section">
+                {% for section in sections %}
+                <option value="{{ section }}">{{ section }}</option>
+                {% endfor %}
 
-<body>
-    <div class="container">
-        <dic class="heading">
-            <h2>Add new student</h2>
-        </dic>
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="form-input">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
-            </div>
-            <div class="form-input">
-                <label for="section">Section</label>
-                <select name="section" id="section">
-                    {% for section in sections %}
-                    <option value="{{ section }}">{{ section }}</option>
-                    {% endfor %}
+            </select>
+        </div>
+        <div class="form-input">
+            <h3>Select Gender</h3>
+            <input type="radio" name="gender" value="female" id="male">
+            <label for="male">Male</label>
+            <input type="radio" name="gender" value="female" id="female">
+            <label for="male">Female</label>
+            <input type="radio" name="gender" value="other" id="other">
+            <label for="other">Other</label>
+        </div>
+        <div class="form-input">
+            <h3>Select Course</h3>
+            <ol>
+                {% for course in courses %}
+                <li>
+                    <label for="course">{{course}}</label>
+                    <input type="checkbox" name="course" id="course" value="{{ course }}">
+                </li>
+                {% endfor %}
 
-                </select>
-            </div>
-            <div class="form-input">
-                <h2>Select Gender</h2>
-                <input type="radio" name="gender" value="female" id="male">
-                <label for="male">Male</label>
-                <input type="radio" name="gender" value="female" id="female">
-                <label for="male">Female</label>
-                <input type="radio" name="gender" value="other" id="other">
-                <label for="other">Other</label>
-            </div>
-            <div class="form-input">
-                <h3>Select Course</h3>
-                <ol>
-                    {% for course in courses %}
-                    <li>
-                        <label for="course">{{course}}</label>
-                        <input type="checkbox" name="course" id="course" value="{{ course }}">
-                    </li>
-                    {% endfor %}
+            </ol>
+        </div>
+        <div class="form-input">
+            <h3>Select Subjects</h3>
+            <ol>
+                {% for subject in subjects %}
+                <li>
+                    <label for="course">{{subject}}</label>
+                    <input type="checkbox" name="course" id="course" value="{{ subject}}">
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+        <input type="submit" value="Add Student">
+    </form>
+</div>
 
-                </ol>
-            </div>
-            <div class="form-input">
-                <h3>Select Subjects</h3>
-                <ol>
-                    {% for subject in subjects %}
-                    <li>
-                        <label for="course">{{subject}}</label>
-                        <input type="checkbox" name="course" id="course" value="{{ subject}}">
-                    </li>
-                    {% endfor %}
-                </ol>
-            </div>
-            <input type="submit" value="Add Student">
-        </form>
-    </div>
-
-    {% if messages %}
-    <hr>
-    <ul class="messages">
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    <a href=" {% url 'home' %} ">Home</a>
-
-
-</body>
-
-</html>
+{% if messages %}
+<hr>
+<ul class="messages">
+    {% for message in messages %}
+    <li>{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<a href=" {% url 'home' %} ">Home</a>
+{% endblock content %}

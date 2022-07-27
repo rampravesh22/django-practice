@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
+{% extends 'core/base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'core.css' %}">
-
-</head>
-
-<body>
-    <center>
-        <h1>All Students</h1>
-    </center>
+<center>
+    <h1>All Students</h1>
+</center>
+<div class="container-student">
     <table>
 
         <head>
@@ -34,33 +24,34 @@
                 <td class="center"><a href="{% url 'delete' student.id %}">Delete</a></td>
             </tr>
             {% endfor %}
-
         </tbody>
-
     </table>
-    <h2 class="click-here"> <a href="{% url 'addstudent' %}">Click Here To add new student</a> </h2>
+</div>
+<h2 class="click-here text-danger">
+    <a href="{% url 'addstudent' %}">Click Here To add new student
 
-    {% if student %}
-    <div class="details">
-        <h2 class="name">Details of : <span>{{student.student_name}}</span></h2>
-        <hr>
-        <h3>Section: {{student.section.section_name}}</h3>
-        <h3>Courses</h3>
-        <ol>
-            {% for course in student.course.all %}
-            <li>{{ course.course_name }}</li>
-            {% endfor %}
-        </ol>
-        <h3>Subjects</h3>
-        <ol>
-            {% for sub in student.subject.all %}
-            <li>{{ sub.subject_name }}</li>
-            {% endfor %}
-        </ol>
-    </div>
-    {% endif %}
-</body>
+    </a>
+</h2>
+<i class="fa-solid fa-house"></i>
 
+{% if student %}
+<div class="details">
+    <h2 class="name">Details of : <span>{{student.student_name}}</span></h2>
+    <hr>
+    <h3>Section: {{student.section.section_name}}</h3>
+    <h3>Courses</h3>
+    <ol>
+        {% for course in student.course.all %}
+        <li>{{ course.course_name }}</li>
+        {% endfor %}
+    </ol>
+    <h3>Subjects</h3>
+    <ol>
+        {% for sub in student.subject.all %}
+        <li>{{ sub.subject_name }}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endif %}
 
-
-</html>
+{% endblock content %}

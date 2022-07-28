@@ -9,7 +9,7 @@
             {% for message in messages %}
             <li {% if message.tags %} class=" d-flex flex-row justify-content-between {{  message.tags }}" {% endif %}>
                 {{message}}
-                <button id="btn-remove"><i class="fa-solid fa-xmark"></i></button></li>
+                <button id="delete-btn"><i class="fa-solid fa-xmark"></i></button></li>
             {% endfor %}
         </ul>
         {% endif %}

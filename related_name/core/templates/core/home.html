@@ -19,7 +19,7 @@
             {% for student in students %}
             <tr>
                 <td>{{student.id}}</td>
-                <td>{{student.student_name}}</td>
+                <td class="text-capitalize">{{student.student_name}}</td>
                 <td class="center"><a href="{% url 'show' student.id %}">View</a></td>
                 <td class="center"><a href="{% url 'delete' student.id %}">Delete</a></td>
             </tr>
@@ -35,7 +35,7 @@
 
 {% if student %}
 <div class="details">
-    <h2 class="name">Details of : <span>{{student.student_name}}</span></h2>
+    <h2 class="name">Details of : <span class="text-uppercase">{{student.student_name}}</span></h2>
     <hr>
     <h3>Section: {{student.section.section_name}}</h3>
     <h3>Courses</h3>

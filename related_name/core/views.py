@@ -46,10 +46,12 @@ def addstudnet(request):
         courses = request.POST.getlist('course')
         subjects = request.POST.getlist('subjects')
         print("************************************************************")
-        student = Student.objects.create(student_name=name)
         print(courses)
         print(subjects)
+        print(section)
+        print(name)
         if section and courses and subjects:
+            student = Student.objects.create(student_name=name)
             section = Section.objects.create(
                 student=student, section_name=section)
             for course in courses:

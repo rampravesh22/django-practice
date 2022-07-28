@@ -7,7 +7,9 @@
         <hr>
         <ul class="messages">
             {% for message in messages %}
-            <li {% if message.tags %} class="{{  message.tags }}" {% endif %}>{{message}}</li>
+            <li {% if message.tags %} class=" d-flex flex-row justify-content-between {{  message.tags }}" {% endif %}>
+                {{message}}
+                <button id="btn-remove"><i class="fa-solid fa-xmark"></i></button></li>
             {% endfor %}
         </ul>
         {% endif %}
@@ -56,8 +58,8 @@
             <ol>
                 {% for subject in subjects %}
                 <li class="d-flex justify-content-between w-50">
-                    <label for="course"><strong>{{ forloop.counter }}.</strong> {{subject}}</label>
-                    <input type="checkbox" name="course" id="course" value="{{ subject}}">
+                    <label for="subjects"><strong>{{ forloop.counter }}.</strong> {{subject}}</label>
+                    <input type="checkbox" name="subjects" id="subjects" value="{{ subject}}">
                 </li>
                 {% endfor %}
             </ol>

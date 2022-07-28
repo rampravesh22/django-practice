@@ -61,7 +61,7 @@ def addstudnet(request):
                     Subject.objects.create(subject_name=subject))
             messages.success(request, "Student details added successfully")
             return redirect(request.META.get('HTTP_REFERER'), context={"name": name})
-        messages.warning(
+        messages.error(
             request, "Please enter all the input field carefully !")
         return redirect(request.META.get('HTTP_REFERER'))
 

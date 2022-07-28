@@ -2,18 +2,18 @@
 {% block content %}
 
 <div class="container">
-    <div class="message">
-        {% if messages %}
-        <hr>
-        <ul class="messages">
-            {% for message in messages %}
-            <li {% if message.tags %} class=" d-flex flex-row justify-content-between {{  message.tags }}" {% endif %}>
-                {{message}}
-                <button id="delete-btn"><i class="fa-solid fa-xmark"></i></button></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show" {% endif %}
+        role="alert">
+        {{message}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endfor %}
+    {% endif %}
+
+
+
     <dic class="heading">
         <h2>Add new student</h2>
     </dic>
@@ -66,7 +66,7 @@
         </div>
         <button type="submit" class="d-flex justify-content-between align-content-center fw-bold rounded-2">Add
             Student
-            <i class="fa-solid fa-circle-plus align-self-center">
+            <i class="fa-solid fa-circle-plus align-self-center"></i>
         </button>
     </form>
 </div>

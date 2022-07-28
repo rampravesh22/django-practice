@@ -178,9 +178,11 @@ input {
 
 }
 
-.container button {
-    width: 9rem;
+.alert-error {
+    background-color: rgba(245, 169, 169, 0.561) !important;
+    color: rgb(121, 15, 15) !important;
 }
+
 
 button[type=submit] i {
     float: right;
@@ -234,14 +236,5 @@ select:focus option {
     position: relative !important;
     left: 2rem !important;
     margin-top: 2rem;
-}
-
-#btn-remove {
-    width: 2.2rem;
-    height: 2.3rem;
-    background-color: rgb(255, 254, 252);
-    border: 1px solid;
-    font-size: 1.5rem;
-    /* padding: .2rem; */
-    border-radius: .2rem;
+    width: 8.6rem;
 }

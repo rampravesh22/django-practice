@@ -67,10 +67,32 @@ thead {
 
 tr {
     transition: all 500ms;
+    padding-top: 3rem !important;
 }
 
 tr:hover {
     background-color: rgb(227, 227, 236);
+}
+
+.warning {
+    list-style: none;
+    background-color: yellow;
+    padding: .7rem;
+    font-weight: 600;
+    border: 2px solid red;
+    margin-left: 0rem;
+    text-transform: capitalize;
+}
+
+.success {
+    list-style: none;
+    background-color: rgb(0, 255, 4);
+    padding: .7rem;
+    font-weight: 600;
+    border: 2px solid red;
+    margin-left: 0rem;
+    text-transform: capitalize;
+
 }
 
 .click-here a {
@@ -78,6 +100,8 @@ tr:hover {
     /* background-color: rgb(204, 223, 224); */
     padding: .7rem 2rem;
     border-radius: .5rem;
+    font-size: 1rem;
+    color: black;
     border: 2px solid black;
     box-shadow: 0 0 5px 1px black;
     text-transform: capitalize;
@@ -88,7 +112,7 @@ tr,
 th,
 td {
     border: 1px solid;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .details {
@@ -141,12 +165,15 @@ input {
     position: relative;
     left: 40%;
     margin-bottom: 3rem;
+    padding: .4rem 1rem;
+    box-shadow: 0 0 6px 3px;
     transition: all 200ms ease-out;
 }
 
 .container~a:hover {
-    transform: scale(2);
+    /* transform: scale(2); */
     color: rgba(0, 0, 0, 0.761);
+
 }
 
 .container button {
@@ -156,6 +183,11 @@ input {
 button i {
     float: right;
     vertical-align: center;
+    transition: 300ms linear;
+}
+
+button:hover i {
+    transform: rotate(180deg);
 }
 
 input {
@@ -194,4 +226,10 @@ select:focus option {
     border-radius: 1rem;
     width: clamp(500px, 70%, 600px) !important;
     margin: 3rem auto;
+}
+
+.container button[type=submit] {
+    position: relative !important;
+    left: 2rem !important;
+    margin-top: 2rem;
 }

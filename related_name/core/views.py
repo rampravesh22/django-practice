@@ -47,16 +47,22 @@ def addstudnet(request):
         subjects = request.POST.getlist('subjects')
         print("************************************************************")
         student = Student.objects.create(student_name=name)
+        print(courses)
+        print(subjects)
+        if section and courses and subjects:
+            section = Section.objects.create(
+                student=student, section_name=section)
+            for course in courses:
+                Course.objects.create(student=student, course_name=course)
+            for subject in subjects:
+                student.subject.add(
+                    Subject.objects.create(subject_name=subject))
+            messages.success(request, "Student details added successfully")
+            return redirect(request.META.get('HTTP_REFERER'), context={"name": name})
+        messages.warning(
+            request, "Please enter all the input field carefully !")
+        return redirect(request.META.get('HTTP_REFERER'))
 
-        section = Section.objects.create(student=student, section_name=section)
-        for course in courses:
-            Course.objects.create(student=student, course_name=course)
-        for subject in subjects:
-            student.subject.add(
-                Subject.objects.create(subject_name=subject))
-
-        messages.success(request, "Student details added successfully")
-        return redirect(request.META.get('HTTP_REFERER'), context={"name": name})
     sections = ['A', 'B', "C", "D"]
     courses = ("Python", "Java", "Django Framework",
                "Golang", "Machine Learning", "DBMS",)

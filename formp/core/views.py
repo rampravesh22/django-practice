@@ -30,13 +30,25 @@ def register(request):
 
 def edit_student(request, id):
     if request.method == "POST":
-        pass
+        student = Student.objects.get(id=id)
+        form = StudentRegister(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            student = Student(id=id)
+            student.name=data['name']
+            student.age = data['age']
+            student.gender = data['gender']
+            student.save()
+            messages.success(request, "Your data has been updated successfully!")
+            return redirect(request.META.get('HTTP_REFERER'))
     else:
         student = Student.objects.get(id=id)
-        form = StudentRegister()
-    
-    context={
-        'form':form
+        name = student.name
+        age = student.age
+        gender = student.gender
+        form = StudentRegister(initial={"name": name,'age':age,'gender':gender})
+    context = {
+        'form': form
     }
     return render(request, "core/edit.html", context)
 

@@ -7,4 +7,3 @@ class StudentRegister(forms.Form):
     age = forms.IntegerField(max_value=100,min_value=18,widget=forms.NumberInput(attrs={"class":"form-control"}))
     gender = forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}))
 
-    

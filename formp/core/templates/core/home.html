@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="container">
+    <h4 class="bg-primary py-2 mt-4 rounded-2 text-center text-white mb-4">Add Student details</h4>
     <form action="" method="post">
         {% csrf_token %}
             {% if form.non_field_errors %}
@@ -35,7 +36,7 @@
             <tbody class="table-group-divider">
                 {% for student in students %}
                     <tr>
-                        <td scope="row">{{ student.id }}</td>
+                        <td scope="row">{{ forloop.counter }}</td>
                         <td scope="row">{{ student.name }}</td>
                         <td scope="row">{{ student.age }}</td>
                         <td scope="row">{{ student.gender }}</td>

@@ -18,7 +18,16 @@ def register(request):
             return redirect(request.META.get('HTTP_REFERER'))
     else:
         form = StudentRegister()
+    students = Student.objects.all()
     context={
-        'form':form
+        'form':form,
+        'students':students
     }
     return render(request, "core/home.html", context)
+
+def edit_student(request,id):
+    if request.method == "POST":
+        pass
+    else:
+        student = Student.objects.get(id=id)
+        form = StudentRegister(isinstance=student)

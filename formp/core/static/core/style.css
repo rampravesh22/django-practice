@@ -1,16 +1,9 @@
-.form-input{
-    margin:1rem;
-    
+form{
+    max-width: 700px !important;
+    margin: auto;
 }
 
-
-tr{
-    border: 2px solid red; 
-}
-td,th{
-    border: 2px solid red; 
-}
-table{
-    border:2px solid black;
-    border-collapse:collapse;
+.student-details{
+    max-width: 900px;
+    margin: auto;
 }

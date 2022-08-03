@@ -13,6 +13,7 @@ def register(request):
             age = data['age']
             gender = data['gender']
             Student.objects.create(name=name, age=age, gender=gender)
+            
             messages.success(request, "Your data has been saved successfully")
             return redirect(request.META.get('HTTP_REFERER'))
     else:

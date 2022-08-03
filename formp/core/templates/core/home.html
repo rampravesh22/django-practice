@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+
     <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors  %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        
         {% for field in form %}
             <div class="form-input">
                 <label for=" {{ field.auto_id }} ">{{field.label_tag|striptags}}</label>
@@ -15,7 +23,14 @@
                 <small>{{ field.errors|striptags }}</small>
             </div>
         {% endfor %}
+        <input type="submit" value="Submit">
     </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <small {% if message.tags %} class="{{ message.tags }}" {% endif %} >{{ message }}</small>
+        {% endfor %}
+    {% endif %}
    
 </body>
 </html>

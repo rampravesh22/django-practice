@@ -1,52 +1,32 @@
 {% extends 'core/base.html' %}
 {% block content %}
+
 <div class="container shadow p-5 rounded-3 mt-4">
     <h4 class="bg-primary py-2 mt-4 rounded-2 text-center text-white mb-4">Edit Student details</h4>
     <form action="" method="post">
         {% csrf_token %}
         {% for field in form %}
-        <div class="mt-2">
-            <label class="mt-2 mb-1" for="{{field.auto_id}}">{{ field.label_tag|striptags }}</label>
-            {{ field }}
-            <small>{{ field.errors |striptags}}</small>
-        </div>
+            <div class="mt-2">
+                <label class="mt-2 mb-1" for="{{field.auto_id}}">{{ field.label_tag|striptags }}</label>
+                {{ field }}
+                <small>{{ field.errors |striptags}}</small>
+            </div>
         {% endfor %}
         <input type="submit" value="update" class="mt-2 btn btn-secondary">
     </form>
 </div>
+
 <div class="text-center">
     <a href="{% url 'home' %}" class="btn btn-primary mt-5">Home</a>
 </div>
+
+
 <div class="message w-50 m-auto text-white">
     {% if messages %}
-    {% for message in messages %}
-    <p {% if message.tags %} class="py-2 px-3 text-cneter bg-{{message.tags}} mt-3 bg-s" {% endif %}>{{message}}</p>
-    {% endfor %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="py-2 px-3 text-cneter bg-{{message.tags}} mt-3 bg-s" {% endif %}>{{message}}</p>
+        {% endfor %}
     {% endif %}
 </div>
-
-<a class="btn btn-primary" data-mdb-toggle="modal" href="#exampleModalToggle1" role="button">Open first modal</a>
-<!-- First modal dialog -->
-<div class="modal fade" id="exampleModalToggle1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1"
-    tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalToggleLabel1">Modal 1</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Show a second modal and hide this one with the button below.
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-mdb-target="#exampleModalToggle22" data-mdb-toggle="modal"
-                    data-mdb-dismiss="modal">
-                    Open second modal
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 {% endblock content %}

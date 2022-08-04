@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from .models import Student
 from .forms import StudentRegister
@@ -17,7 +18,7 @@ def register(request):
 
             messages.success(
                 request, f"{s.name} data has been saved successfully")
-            return redirect(request.META.get('HTTP_REFERER'))
+            return JsonResponse({"Yes":"Suceeded"})
     else:
         form = StudentRegister()
     students = Student.objects.all()

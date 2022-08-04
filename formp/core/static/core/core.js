@@ -1,20 +1,22 @@
 $(document).ready(function () {
-    $(document).on('submit', '#form_id', function (e) {
+    $(document).on('submit', '#add-student', function (e) {
         console.log("hello world");
-        e.preventDefault();
-        const name = $('#name_id').val();
-        const email = $('#email_id').val();
+        const name = $('#id_name').val();
+        const age = $('#id_age').val();
+        const gender = $('#id_gender').val();
  
         $.ajax({
             type: 'POST',
-            url: 'getemail/',
+            url: '/',
             data: {
                 name: name,
-                email: email,
+                age: age,
+                gender:gender,
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
             },
-            success: function () {
-                cosole.log("Data saved successfully")
+            success: function (response) {
+                console.log(response);
+                console.log("Data saved successfully")
             },
         });
     });

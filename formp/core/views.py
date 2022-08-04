@@ -56,6 +56,6 @@ def edit_student(request, id):
 def delete_student(request, id):
     student = Student.objects.get(id=id)
     student.delete()
-    messages.warning(
+    messages.error(
         request, f"{student.name} details is deleted successfully!")
     return redirect("/", kwargs={'student': student})

@@ -1,3 +1,7 @@
 .container{
     width: clamp(500px,80%,700px);;
 }
+
+.bg-error{
+    background-color: red;
+}

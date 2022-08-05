@@ -16,7 +16,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 console.log(response);
-                console.log("Data saved successfully")
+                window.location.href="edit/"
             },
         });
     });

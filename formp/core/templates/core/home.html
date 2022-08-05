@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h4 class="bg-primary py-2 mt-4 rounded-2 text-center text-white mb-4">Add Student details</h4>
-    <form action="" method="post" id="add-student">
+    <form action="" method="post" id="add-student" class="mb-4">
         {% csrf_token %}
             {% if form.non_field_errors %}
                 {% for error in form.non_field_errors  %}
@@ -20,6 +20,12 @@
 
         <input type="submit" value="Add" class="btn btn-primary mt-2">
     </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="py-1 rounded-3 text-center bg-{{message.tags}} text-white" {% endif %}>{{message}}
+            </p>
+        {% endfor %}
+    {% endif %}
     <div class="student-details">
         <table class="table mt-4">
             <thead>
@@ -33,7 +39,7 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                {% for student in students %}
+                {% for student in page_obj %}
                     <tr>
                         <td scope="row">{{ forloop.counter }}</td>
                         <td scope="row">{{ student.name }}</td>
@@ -51,14 +57,30 @@
                         </td>
                     </tr>
                 {% endfor %}
+                
             </tbody>
         </table>
+        <div class="pagination">
+            <span class="step-links">
+
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; First</a>
+                    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+             
+            </span>
+        </div>
     </div>
-    {% if messages %}
-        {% for message in messages %}
-            <p {% if message.tags %} class="py-1 rounded-3 text-center bg-{{message.tags}} text-white" {% endif %} >{{message}}</p>
-        {% endfor %}
-    {% endif %}
+    
 </div>
 
 {% endblock content %}

@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from .models import Student
 from .forms import StudentRegister
+from django.core.paginator import Paginator
 from django.contrib import messages
 # Create your views here.
 
@@ -18,13 +19,19 @@ def register(request):
 
             messages.success(
                 request, f"{s.name} data has been saved successfully")
-            return JsonResponse({"Yes":"Suceeded"})
+            return redirect('/')
     else:
         form = StudentRegister()
+        
     students = Student.objects.all()
+    paginator = Paginator(students,3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     context = {
         'form': form,
-        'students': students
+        'students': students,
+        'page_obj':page_obj
     }
     return render(request, "core/home.html", context)
 

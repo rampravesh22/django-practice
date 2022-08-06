@@ -7,7 +7,7 @@ from django.contrib import messages
 # Create your views here.
 
 
-def register(request):
+def home(request):
     if request.method == "POST":
         form = StudentRegister(request.POST)
         if form.is_valid():
@@ -24,9 +24,17 @@ def register(request):
         form = StudentRegister()
         
     students = Student.objects.all()
-    paginator = Paginator(students,3)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    students = students.order_by("name")
+    
+    paginator = Paginator(students,per_page=4,orphans=3)
+    print("*********************************************************")
+    print(paginator.count)
+    print(paginator.num_pages)
+    print(paginator.page_range)
+    
+    page = request.GET.get('page')
+    page_obj = paginator.get_page(page)
+    page_range = paginator.get_elided_page_range(number=page)
     
     context = {
         'form': form,

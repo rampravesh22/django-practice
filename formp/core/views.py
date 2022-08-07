@@ -4,7 +4,6 @@ from .models import Student
 from .forms import StudentRegister
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.views.generic.list import ListView
 # Create your views here.
 
 
@@ -72,3 +71,22 @@ def delete_student(request, id):
     messages.error(
         request, f"{student.name} details is deleted successfully!")
     return redirect("/", kwargs={'student': student})
+
+def all_student(request):
+    if request.method == "POST":
+        pass
+    students = Student.objects.all()
+    students = students.order_by("name")
+    paginator = Paginator(students,per_page=10,orphans=2)    
+    page = request.GET.get('page')
+    page_obj = paginator.get_page(page)
+    page_range = paginator.get_elided_page_range(number=page)
+    
+    context = {
+        'students': students,
+        'page_obj':page_obj,
+        "page_range":page_range
+    }
+        
+    return render(request,"core/all_student.html",context)
+        

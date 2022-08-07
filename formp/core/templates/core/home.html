@@ -17,7 +17,7 @@
                 <small>{{ field.errors|striptags }}</small>
             </div>
         {% endfor %}
-            
+
         <input type="submit" value="Add" class="btn btn-primary mt-2">
     </form>
     {% if messages %}
@@ -60,6 +60,9 @@
                 
             </tbody>
         </table>
+        <div class="text-center mx-3">
+            <a href="{% url "allstudent" %}" class="btn btn-outline-primary">All Student</a>
+        </div>
         <ul class="pagination justify-content-center flex-wrap mt-2 mb-4">
             {% if page_obj.has_previous %}
                 <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>

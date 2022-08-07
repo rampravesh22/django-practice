@@ -27,6 +27,9 @@
         {% endfor %}
     {% endif %}
     <div class="student-details">
+        <form action="" method="post">
+            <input type="text" placeholder="Search Student name" class="form-control">
+        </form>
         <table class="table mt-4">
             <thead>
                 <tr>
@@ -88,7 +91,6 @@
             {% endif %}
         </ul>        
     </div>
-    
 </div>
 
 {% endblock content %}

@@ -24,6 +24,7 @@ def home(request):
     else:
         form = StudentRegister()
         
+        
     students = Student.objects.all()
     
     students = students.order_by("name")

@@ -17,7 +17,7 @@
                 <small>{{ field.errors|striptags }}</small>
             </div>
         {% endfor %}
-
+            
         <input type="submit" value="Add" class="btn btn-primary mt-2">
     </form>
     {% if messages %}
@@ -27,9 +27,6 @@
         {% endfor %}
     {% endif %}
     <div class="student-details">
-        <form action="" method="post">
-            <input type="text" placeholder="Search Student name" class="form-control">
-        </form>
         <table class="table mt-4">
             <thead>
                 <tr>

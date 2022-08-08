@@ -1,6 +1,5 @@
 .container {
     width: clamp(500px, 80%, 700px);
-    ;
 }
 
 .bg-error {
@@ -12,10 +11,6 @@ input:focus {
     outline: none !important;
     border: none !important;
 }
-a{
-    transition: 300ms;
-}
-
 
 a:focus {
     outline: none !important;

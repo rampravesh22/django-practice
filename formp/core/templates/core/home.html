@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h4 class="bg-primary py-2 mt-4 rounded-2 text-center text-white mb-4">Add Student details</h4>
-    <form action="" method="post" id="add-student" class="mb-4">
+    <form action="" method="post" id="add-student" class="mb-4" autocomplete="off">
         {% csrf_token %}
             {% if form.non_field_errors %}
                 {% for error in form.non_field_errors  %}
@@ -30,7 +30,7 @@
         <table class="table mt-4">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    {% comment %} <th scope="col">Id</th> {% endcomment %}
                     <th scope="col">Name</th>
                     <th scope="col">Age</th>
                     <th scope="col">Gender</th>
@@ -41,7 +41,7 @@
             <tbody class="table-group-divider">
                 {% for student in page_obj %}
                     <tr>
-                        <td scope="row">{{ student.id }}</td>
+                        {% comment %} <td scope="row">{{ student.id }}</td> {% endcomment %}
                         <td scope="row">{{ student.name }}</td>
                         <td scope="row">{{ student.age }}</td>
                         <td scope="row">{{ student.gender }}</td>

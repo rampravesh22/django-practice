@@ -3,17 +3,17 @@
 
 <div class="student-details container">
     <h4 class="bg-primary text-center my-5 text-white py-2 rounded-1">All Student Details</h4>
-    <form action="" method="get">
+    <form action="" method="get" >
         {% csrf_token %}
         <div class="fom-control">
-            <input type="text" name="byName" class="form-control" placeholder ="Search Here">
-            <input type="submit" value="Search" class="form-control w-25 bg-secondary text-white mt-2">
+            <input type="text" name="byName" required class="form-control" placeholder ="Search Here" autocomplete="off">
+            <input type="submit" value="Search" class="form-control w-25 bg-secondary text-white mt-2"  autocomplete="off">
         </div>
     </form>
     <table class="table mt-4">
         <thead>
             <tr>
-                <th scope="col">Id</th>
+                {% comment %} <th scope="col">Id</th> {% endcomment %}
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Gender</th>
@@ -22,9 +22,9 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            {% for student in page_obj %}
+        {% for student in page_obj %}
                 <tr>
-                    <td scope="row">{{ student.id }}</td>
+                    {% comment %} <td scope="row">{{ student.id }}</td> {% endcomment %}
                     <td scope="row">{{ student.name }}</td>
                     <td scope="row">{{ student.age }}</td>
                     <td scope="row">{{ student.gender }}</td>

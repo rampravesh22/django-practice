@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <small>{{error}}</small>
+            {% endfor %}
+        {% endif %}
+        {% for field in form %}
+            <div class="mb-3">
+                <label for="{{field.auto_id}}">{{field.label_tag|striptags}}</label>
+                {{field}}
+                <div class="text-danger">{{field.help_text}}</div>
+                <small class="text-primary">{{field.errors|striptags}}</small>
+            </div>
+        {% endfor %}
+        <input type="submit" name="" id="" value="Add">
+    </form>
+</div>
+{% if messages %}
+    {% for message in messages %}
+        <p class="{{message.tags}}">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+
+{% endblock content %}

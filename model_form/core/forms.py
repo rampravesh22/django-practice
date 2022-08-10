@@ -4,6 +4,7 @@ from core import choices
 class StudentRegistration(forms.ModelForm):
     # we can also define as normal form
     name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+    gender = forms.CharField(widget=forms.Select(choices=choices.GENDER))
     # subjects = forms.ModelMultipleChoiceField(Student.objects.all().values_list)
     # subjects = forms.CharField(required=False)
     # selected = forms.ChoiceField(required=False)

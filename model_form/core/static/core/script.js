@@ -1,11 +1,10 @@
 $(document).ready(function () {
     $(document).on('submit', '#form_id', function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         const name = $('#id_name').val();
         const subjects = $("#id_subjects").prop("checked");
         console.log(name);
         console.log(subjects);
-
         $.ajax({
             type: 'POST',
             url: '/',

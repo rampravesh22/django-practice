@@ -1,24 +1,17 @@
 from django.shortcuts import render,redirect
 from core.forms import StudentRegistration
+from django.http import JsonResponse
 # Create your views here.
 def add_student(request):
     if request.method == "POST":
         print("Method is POST")
         student_form = StudentRegistration(request.POST)
-        print(student_form.clean)
-        
-        if student_form.is_valid():
-            # student_form.save()
-            redirect("/")
-        else:
-            print("********************   Not valid   **********************")
-        
-        
+        redirect("/")        
     initial_data={
             "name":"Rampravesh",
             "age":21,
             "gender":"Male",
-            "subjects":["Math","Hindi"]
+            "subjects":["Math","Hindi","Science"]
         }
     form = StudentRegistration(initial=initial_data)
     context={ 

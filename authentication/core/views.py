@@ -14,7 +14,8 @@ def register(request):
             return redirect("/")
         else:
             print("####################################################")
-    form = UserCreationForm()
+    else:
+        form = UserCreationForm()
     context = {
         "form": form
     }

@@ -7,13 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
-        print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
         if form.is_valid():
             form.save()
-            print("********************************************************")
             return redirect("/")
         else:
-            print("####################################################")
+            pass
     else:
         form = UserCreationForm()
     context = {

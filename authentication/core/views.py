@@ -4,14 +4,15 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
+def home(request):
+    context={}
+    return render(request, "core/home.html", context)
+
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("/")
-        else:
-            pass
+        form.save()
+        return redirect("/")
     else:
         form = UserCreationForm()
     context = {

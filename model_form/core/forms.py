@@ -4,11 +4,12 @@ from core import choices
 class StudentRegistration(forms.ModelForm):
     # we can also define as normal form
     name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+    # subjects = forms.ModelMultipleChoiceField(Student.objects.all().values_list)
     # subjects = forms.CharField(required=False)
     # selected = forms.ChoiceField(required=False)
     class Meta:
         model = Student
-        fields =['name','age','gender']
+        fields =['name','age','gender','subjects']
         # fields = "__all__"  # it select all the field to render on teplate
        # exclude=["gender"]    # it remove the mention field from rendering
         
@@ -31,7 +32,7 @@ class StudentRegistration(forms.ModelForm):
         widgets = {
             "name":forms.FileInput(attrs={"class":"form-control"}),
             "age":forms.NumberInput(attrs={"class":"form-control"}),
-           # "gender":forms.Select(attrs={"class":"form-control"}),
-           # "selected":forms.RadioSelect(attrs={"class":"form-check"},choices=choices.SELECTED),
+           "gender":forms.Select(attrs={"class":""}),
+           "subjects":forms.CheckboxSelectMultiple(attrs={"class":""}),
            # 'subjects':forms.CheckboxSelectMultiple(attrs={"class":"form-check"},choices=choices.SUBJECTS)
         }

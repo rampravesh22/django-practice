@@ -13,6 +13,13 @@
     </style>
 </head>
 <body>
+    <div class="non-field-error">
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p style="color:red;border:2px solid blue;padding:10px;border-radius:10px;">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
     <form action="" method="post" novalidate>
         {% csrf_token %}
         {% for field in form %}
@@ -23,7 +30,7 @@
             </div>
             <br>
         {% endfor %}
-        <input type="submit" value="Register">
+        <input type="submit" value="Login">
     </form>
     <div class="messages">
         {% if messages %}
@@ -33,7 +40,7 @@
         {% endif %}
     </div>
     <br><br>
-    <a href="{% url 'home' %}">Home</a><br><br>
-    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'home' %}">Home</a><br><br><br>
+    <a href="{% url 'register' %}">Register</a>
 </body>
 </html>

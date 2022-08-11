@@ -4,11 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
+        print("This is executed")
         if form.is_valid():
             form.save()
-            return redirect(request.META.get('HTTP_REFERER'))
+            print("Form.save() executed")
+            return redirect("/")
         else:
-            return redirect(request.META.get('HTTP_REFERER'))
+            return redirect('/')
             print("Form is not valid")
     else:
         form = UserCreationForm()

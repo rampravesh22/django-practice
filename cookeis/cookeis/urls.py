@@ -19,5 +19,7 @@ from student import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("set/",views.set_cookies)
+    path("set/",views.set_cookies),
+    path("get/",views.get_cookies),
+    path("del/",views.del_cookies),
 ]

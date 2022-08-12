@@ -7,9 +7,10 @@ def set_cookies(request):
     return response
 
 def get_cookies(request):
-    print()
-    return render(request, "student/get_cookie.html")
+    name = request.COOKIES.get("name","This name is not set yet")
+    return render(request, "student/getcookie.html",{'name':name})
 
 def del_cookies(request):
-    context={}
-    return render(request, "student/del_cookie.html", context)
+    response = render(request, "student/delcookie.html")
+    response.delete_cookie('name')
+    return response

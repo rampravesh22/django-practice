@@ -5,8 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>get</title>
+    <style>
+        ::selection{
+            background-color:pink;
+        }
+    </style>
 </head>
 <body>
     <h1>Name: {{ name|title }}</h1>
+    <h1>Name: {{ age }}</h1>
+
+    {% for key in request.session.keys %}
+        <h4>{{key}}</h4>
+    {% endfor %}
 </body>
 </html>

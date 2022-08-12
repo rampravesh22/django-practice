@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from datetime import datetime,timedelta
 # Create your views here.
-def set_cookies(request):
-    response = render(request, "student/setcookie.html")
-    response.set_cookie("name","rahul",expires=datetime.utcnow()+timedelta(days=2))
-    return response
+def set_session(request):
+    request.session['name'] = "Rampravesh Chaudhari"
+    return render(request, "student/setsession.html")
 
-def get_cookies(request):
-    name = request.COOKIES.get("name","This name is not set yet")
-    return render(request, "student/getcookie.html",{'name':name})
 
-def del_cookies(request):
-    response = render(request, "student/delcookie.html")
-    response.delete_cookie('name')
-    return response
+def get_session(request):
+    name=request.session['name']
+    return render(request, "student/getsession.html",{'name':name})
+
+def del_session(request):
+    if 'name' in request.session:
+        del request.session['name'] 
+    return render(request, "student/delsession.html")

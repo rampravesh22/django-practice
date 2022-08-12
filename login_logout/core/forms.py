@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django import forms
 from django.contrib.auth.models import User
 
@@ -8,5 +8,12 @@ class SignUp(UserCreationForm):
     # email = forms.EmailField(required=True,error_messages={"required":"Hello there"})
     class Meta:
         model = User
-        fields = ["username"]
-        # fields = ["first_name","last_name","email"]
+        # fields = ["username"]
+        fields = ["username","first_name","last_name","email"]
+        
+        
+class UpdateUserForm(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields=["username","first_name","last_name",'email',"date_joined","email"]

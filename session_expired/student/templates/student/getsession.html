@@ -15,9 +15,10 @@
 
 <body>
     <h1>Name: {{ name|title }}</h1>
-    <p><strong>Cookie Age in second: </strong>{{request.session.get_session_cookie_age}}</p>
-    <p><strong>Expiry Age second:</strong> {{request.session.get_expiry_age}}</p>
+    <p><strong>Cookie Age: </strong>{{request.session.get_session_cookie_age}}s</p>
+    <p><strong>Expiry Age:</strong> {{request.session.get_expiry_age}}s</p>
     <p><b>Expiry date:</b> {{request.session.get_expiry_date}}</p>
+    <p><b>Modiefied:</b> {{request.session.modified}}</p>
     <p><strong>Get Expiry at browser close:</strong> {{request.session.get_expire_at_browser_close}}</p>
 </body>
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get</title>
+    <style>
+        ::selection {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Name: {{ name|title }}</h1>
+    <p><strong>Cookie Age in second: </strong>{{request.session.get_session_cookie_age}}</p>
+    <p><strong>Expiry Age second:</strong> {{request.session.get_expiry_age}}</p>
+    <p><b>Expiry date:</b> {{request.session.get_expiry_date}}</p>
+    <p><strong>Get Expiry at browser close:</strong> {{request.session.get_expire_at_browser_close}}</p>
+</body>
+
+</html>

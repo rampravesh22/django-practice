@@ -1,1 +1,24 @@
-<h1 class="bg-warning text-center py-3 nav-bar-title">{{ current|title }}</h1>
+
+<div class="parent d-flex justify-content-between nav-bar-title ml-2">
+    <h1 class="text-center py-3 ml-3">{{ current|title }}</h1>
+    <div class="footer-content container d-flex justify-content-between mb-3">
+        {% if request.user.is_authenticated %}
+            <div class="link">
+                <a href="{% url 'profile' %}" class="btn btn-primary"><i class="fa-solid fa-user"></i></a>
+            </div>
+            <div class="link">
+                <a href="{% url 'logout' %}" class="btn btn-danger"><i class="fa fa-sign-out" aria-hidden="true"></i></i></a>
+            </div>
+        {% else %}
+            <div class="link">
+                <a href="{% url 'home' %}" class="btn btn-secondary"><i class="fa fa-home" aria-hidden="true"></i></a>
+            </div>
+            <div class="link">
+                <a href="{% url 'register' %}" class="btn btn-success"><i class="fa-solid fa-user-plus"></i></a>
+            </div>
+            <div class="link">
+                <a href="{% url 'login' %}" class="btn btn-success"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+            </div>
+        {% endif %}
+    </div>
+</div>

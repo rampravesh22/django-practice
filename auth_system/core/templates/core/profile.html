@@ -16,12 +16,5 @@
     <div class="change-without" style="margin-top:20px;">
         <a href="{% url 'changewithout' %}">Change Password without Old Password</a>
     </div>
-{% else %}
-    <div class="rgister">
-        <a href="{% url 'register' %}">Register</a>
-    </div>
-    <div class="login" style="margin-top:20px;">
-        <a href="{% url 'login' %}">Login</a>
-    </div>
 {% endif %}
 {% endblock content %}

@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
-from core.forms import SignUp,UpdateUserForm
+from core.forms import SignUp, UpdateUserForm, LoginForm
 from django.contrib import messages
-# from django.contrib.auth import
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib import messages
@@ -11,8 +10,15 @@ from django.contrib import messages
 
 def home(request):
     context = {}
-    return render(request, "core/home.html", context)
+    if 'session' in request.session:
+        request.session.modiefied = True
+        return render(request, "core/home.html", context)
+    else:
+        return redirect("/session-expired/")
 
+def session_expired(request):
+    context = {}
+    return render(request, "core/session_expired.html", context)
 
 def register(request):
     if request.method == 'POST':
@@ -33,7 +39,7 @@ def register(request):
 def user_login(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
-            form = AuthenticationForm(request=request, data=request.POST)
+            form = LoginForm(request=request, data=request.POST)
             if form.is_valid():
                 data = form.cleaned_data
                 username = data['username']
@@ -41,11 +47,12 @@ def user_login(request):
                 user = authenticate(username=username, password=password)
                 if user:
                     login(request, user)
+                    request.session['session'] = True
                     messages.success(request, "You have loged in successfully")
                     return redirect("/profile/")
 
         else:
-            form = AuthenticationForm()
+            form = LoginForm()
 
         context = {
             "form": form
@@ -129,8 +136,10 @@ def update_profile(request):
         else:
             form = UpdateUserForm(instance=request.user)
         context = {
-            'form':form
+            'form': form
         }
         return render(request, "core/updateprofile.html", context)
     else:
         return redirect('/login/')
+
+

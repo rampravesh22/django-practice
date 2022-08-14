@@ -25,5 +25,6 @@ urlpatterns = [
     path('logout/',views.log_out,name="logout"),
     path('changewith/',views.change_pass_with_old_pass,name="changewith"),
     path('changewithout/',views.change_pass_without_old_pass,name="changewithout"),
-    path("updateprofile/", views.update_profile, name="updateprofile")
+    path("updateprofile/", views.update_profile, name="updateprofile"),
+    path("session-expired/", views.session_expired, name="session-expired")
 ]

@@ -1,29 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home</h1>
- 
-    {% if request.user.is_authenticated %}
-        <div class="logout" style="margin-top:20px;">
-            <a href="{% url 'logout' %}">Logout</a>
-        </div>    
-        <div class="logout" style="margin-top:20px;">
-            <a href="{% url 'profile' %}">Profile</a>
-        </div>    
-    {% else %}
-        <div class="rgister">
-            <a href="{% url 'register' %}">Register</a>
+{% extends 'core/base.html' %}
+{% block content %}
+
+<h1 class="bg-warning text-center py-3">{{ current }}</h1>
+{% if request.user.is_authenticated %}
+    <div class="logout" style="margin-top:20px;">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>    
+    <div class="logout" style="margin-top:20px;">
+        <a href="{% url 'profile' %}">Profile</a>
+    </div>    
+{% else %}
+    <div class="rgister">
+        <a href="{% url 'register' %}">Register</a>
+    </div>
+    <div class="login" style="margin-top:20px;">
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+{% endif %}
+
+<div class="parent d-flex justify-content-center">
+    <div class="footer-content container position-fixed bottom-0 d-flex justify-content-evenly mb-3">
+        <div class="link">
+            <a href="" class="btn btn-secondary"><i class="fa fa-home" aria-hidden="true"></i></a>
         </div>
-        <div class="login" style="margin-top:20px;">
-            <a href="{% url 'login' %}">Login</a>
+        <div class="link">
+            <a href="" class="btn btn-danger"><i class="fa-solid fa-right-to-bracket"></i></a>
         </div>
-    {% endif %}
-   
-</body>
-</html>
+        <div class="link">
+            <a href="" class="btn btn-success"><i class="fa-solid fa-user-plus"></i></a>
+        </div>
+        <div class="link">
+            <a href="" class="btn btn-primary"><i class="fa-solid fa-user"></i></a>
+        </div>
+    
+    </div>
+</div>
+{% endblock content %}

@@ -1,33 +1,35 @@
 {% extends 'core/base.html' %}
 {% block content %}
-
-<div class="non-field-error">
-    {% if form.non_field_errors %}
-    {% for error in form.non_field_errors %}
-    <p style="color:red;border:2px solid blue;padding:10px;border-radius:10px;">{{error}}</p>
-    {% endfor %}
-    {% endif %}
-</div>
-<form action="" method="post" novalidate>
-    {% csrf_token %}
-    {% for field in form %}
-    <div class="mb-3">
-        {{field.label_tag}}
-        {{field}}
-        <div style="color:red;">{{field.errors}}</div>
+<h1 class="bg-warning text-center py-3">{{ current }}</h1>
+<div class="login-container container">
+    <div class="non-field-error">
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p style="color:red;border:2px solid blue;padding:10px;border-radius:10px;">{{error}}</p>
+        {% endfor %}
+        {% endif %}
     </div>
-    <br>
-    {% endfor %}
-    <input type="submit" value="Login">
-</form>
-<div class="messages">
-    {% if messages %}
-    {% for message in messages %}
-    <p {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</p>
-    {% endfor %}
-    {% endif %}
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="mb-3">
+            {{field.label_tag}}
+            {{field}}
+            <div style="color:red;">{{field.errors}}</div>
+        </div>
+        <br>
+        {% endfor %}
+        <input type="submit" value="Login">
+    </form>
+    <div class="messages">
+        {% if messages %}
+        {% for message in messages %}
+        <p {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <br><br>
+    <a href="{% url 'home' %}">Home</a><br><br><br>
+    <a href="{% url 'register' %}">Register</a>
 </div>
-<br><br>
-<a href="{% url 'home' %}">Home</a><br><br><br>
-<a href="{% url 'register' %}">Register</a>
 {% endblock content %}

@@ -1,0 +1,18 @@
+.footer-content{
+    background-color: rgb(164, 149, 179);
+    border: 2px solid black;
+    padding: 10px;
+    border-radius:10px ;
+    width: clamp(400px,60%,600px);;
+    margin: 5 auto !important;
+}
+
+.footer-content a{
+    box-shadow: 0 0 2px 1px rgb(38, 0, 0);
+    font-size: small;
+    transition: all 200ms ease-in-out;
+}
+
+.footer-content a:hover i{
+    transform: rotate(360deg);
+}

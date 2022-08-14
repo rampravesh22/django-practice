@@ -1,52 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .messages p {
-            color: green;
-            background-color: dodger-blue;
-        }
-    </style>
-</head>
-
-<body>
-    <form action="" method="post" novalidate>
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="mb-3">
-            {{field.label_tag}}
-            {{field}}
-            <div style="color:red;">{{field.errors}}</div>
-        </div>
-        <br>
-        {% endfor %}
-        <input type="submit" value="Register">
-    </form>
-    <div class="messages">
-        {% if messages %}
-        {% for message in messages %}
-        <p {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</p>
-        {% endfor %}
-        {% endif %}
+{% extends 'core/base.html' %}
+{% block content %}
+<h1 class="bg-warning text-center py-2 mb-3">{{ current }}</h1>
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-3">
+        {{field.label_tag}}
+        {{field}}
+        <div style="color:red;">{{field.errors}}</div>
     </div>
-    <br><br>
-    {% if request.user.is_authenticated %}
-    <div class="logout" style="margin-top:20px;">
-        <a href="{% url 'logout' %}">Logout</a>
-    </div>
-    {% else %}
-    <div class="rgister">
-        <a href="{% url 'register' %}">Register</a>
-    </div>
-    <div class="login" style="margin-top:20px;">
-        <a href="{% url 'login' %}">Login</a>
-    </div>
+    <br>
+    {% endfor %}
+    <input type="submit" value="Register">
+</form>
+<div class="messages">
+    {% if messages %}
+    {% for message in messages %}
+    <p {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+    {% endfor %}
     {% endif %}
-</body>
-
-</html>
+</div>
+<br><br>
+{% if request.user.is_authenticated %}
+<div class="logout" style="margin-top:20px;">
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+{% else %}
+<div class="rgister">
+    <a href="{% url 'register' %}">Register</a>
+</div>
+<div class="login" style="margin-top:20px;">
+    <a href="{% url 'login' %}">Login</a>
+</div>
+{% endif %}
+{% endblock content %}

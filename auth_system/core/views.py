@@ -8,11 +8,10 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, "core/home.html")
-
-def session_expired(request):
-    context = {}
-    return render(request, "core/session_expired.html", context)
+    context = {
+        'current':"Home Page"
+    }
+    return render(request, "core/home.html",context)
 
 def register(request):
     if request.method == 'POST':
@@ -25,6 +24,7 @@ def register(request):
     else:
         form = SignUp()
     context = {
+        'current':"Sign-Up Page",
         "form": form
     }
     return render(request, "core/register.html", context)
@@ -48,6 +48,7 @@ def user_login(request):
             form = LoginForm()
 
         context = {
+            'current':"Login Page",
             "form": form
         }
         return render(request, "core/login.html", context)
@@ -57,6 +58,7 @@ def user_login(request):
 def profile(request):
     if request.user.is_authenticated:
         context = {
+            'current':"Profile Page",
             'name': request.user.first_name
         }
         return render(request, "core/profile.html", context)
@@ -87,6 +89,7 @@ def change_pass_with_old_pass(request):
             form = PasswordChangeForm(user=request.user)
 
         context = {
+            'current':"Change Password with old Password",
             'form': form
         }
         return render(request, "core/change_pass_with_old_pass.html", context)
@@ -110,6 +113,7 @@ def change_pass_without_old_pass(request):
             form = SetPasswordForm(user=request.user)
 
         context = {
+            'current':"Change password without old password",
             'form': form
         }
         return render(request, "core/change_pass_with_old_pass.html", context)
@@ -128,6 +132,7 @@ def update_profile(request):
         else:
             form = UpdateUserForm(instance=request.user)
         context = {
+            'current':"Update Profile",
             'form': form
         }
         return render(request, "core/updateprofile.html", context)

@@ -18,13 +18,11 @@ class UpdateUserForm(UserChangeForm):
         fields=["username","first_name","last_name",'email',"date_joined","email"]
         
 class LoginForm(AuthenticationForm):
-    # username = forms.CharField(label="Email or Username")
-    class Meta:
-        model = User
-        fields = ["username",'password']
-        label = {
-            'username':"username/email"
-        }
-        widgets = {
-            "username":forms.TextInput(attrs={'class':"Hello"})
-        }
+    username = forms.CharField(label="Email or Username",widget=forms.TextInput(attrs={"class":"form-control",'autocomplete':"off"}))
+    def __init__(self,*args ,**kwargs):
+        super().__init__( *args, **kwargs)
+        self.fields['password'].widget.attrs.update({
+            'class':"form-control",
+            'autocomplete': 'current-password'
+        })
+        

@@ -5,16 +5,15 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib import messages
 
+
 # Create your views here.
-
-
 def home(request):
-    # context = {}
-    # if 'session' in request.session:
-    #     request.session.modiefied = True
+    context = {}
+    if 'session' in request.session:
+        request.session.modiefied = True
         return render(request, "core/home.html")
-    # else:
-    #     return redirect("/session-expired/")
+    else:
+        return redirect("/session-expired/")
 
 def session_expired(request):
     context = {}
@@ -47,7 +46,7 @@ def user_login(request):
                 user = authenticate(username=username, password=password)
                 if user:
                     login(request, user)
-                    # request.session['session'] = True
+                    request.session['session'] = True
                     messages.success(request, "You have loged in successfully")
                     return redirect("/profile/")
 

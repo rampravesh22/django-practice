@@ -18,9 +18,13 @@ class UpdateUserForm(UserChangeForm):
         fields=["username","first_name","last_name",'email',"date_joined","email"]
         
 class LoginForm(AuthenticationForm):
+    # username = forms.CharField(label="Email or Username")
     class Meta:
         model = User
         fields = ["username",'password']
-        labels = {
+        label = {
             'username':"username/email"
+        }
+        widgets = {
+            "username":forms.TextInput(attrs={'class':"Hello"})
         }

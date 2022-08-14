@@ -8,12 +8,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    context = {}
-    if 'session' in request.session:
-        request.session.modiefied = True
-        return render(request, "core/home.html")
-    else:
-        return redirect("/session-expired/")
+    return render(request, "core/home.html")
 
 def session_expired(request):
     context = {}
@@ -46,7 +41,6 @@ def user_login(request):
                 user = authenticate(username=username, password=password)
                 if user:
                     login(request, user)
-                    request.session['session'] = True
                     messages.success(request, "You have loged in successfully")
                     return redirect("/profile/")
 
@@ -102,7 +96,6 @@ def change_pass_with_old_pass(request):
 
 def change_pass_without_old_pass(request):
     if request.user.is_authenticated:
-
         if request.method == 'POST':
             form = SetPasswordForm(user=request.user, data=request.POST)
             if form.is_valid():

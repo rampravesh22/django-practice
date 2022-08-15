@@ -1,13 +1,13 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<div class="login-container container">
-    <div class="non-field-error">
-        {% if form.non_field_errors %}
-        {% for error in form.non_field_errors %}
-        <p style="color:red;border:2px solid blue;padding:10px;border-radius:10px;">{{error}}</p>
-        {% endfor %}
-        {% endif %}
-    </div>
+<div class="non-field-error mt-3 px-4">
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p style="color:red;border:2px solid blue;padding:10px;border-radius:10px;">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="login-container container shadow mt-5 py-5 px-4 rounded-2 p-5 register-container">
     <form action="" method="post" novalidate>
         {% csrf_token %}
         {% for field in form %}
@@ -18,7 +18,7 @@
         </div>
         <br>
         {% endfor %}
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" class="btn btn-primary">
     </form>
     <div class="messages">
         {% if messages %}
@@ -28,7 +28,5 @@
         {% endif %}
     </div>
     <br><br>
-    <a href="{% url 'home' %}">Home</a><br><br><br>
-    <a href="{% url 'register' %}">Register</a>
 </div>
 {% endblock content %}

@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<div class="container">
-    <form action="" method="post" novalidate>
+<div class="container shadow mt-5 py-5 px-4 rounded-2 p-5 register-container">
+    <form action="" method="post" novalidate class="">
         {% csrf_token %}
         {% for field in form %}
         <div class="mb-3">
@@ -11,7 +11,7 @@
         </div>
         <br>
         {% endfor %}
-        <input type="submit" value="Register">
+        <input type="submit" class="btn btn-success" value="Register">
     </form>
 </div>
 <div class="messages">

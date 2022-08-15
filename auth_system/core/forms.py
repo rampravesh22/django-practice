@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class SignUp(UserCreationForm):
-    password1 = forms.CharField(widget=forms.PasswordInput({'class':"form-control"}))
+    password1 = forms.CharField(label="Password",widget=forms.PasswordInput({'class':"form-control"}))
     password2 = forms.CharField(max_length=200, required=True,
                                 label="Password Confirmation", widget=forms.PasswordInput({'class':"form-control"}))
     # email = forms.EmailField(required=True,error_messages={"required":"Hello there"})

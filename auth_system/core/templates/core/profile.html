@@ -1,20 +1,30 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<a href="{% url 'home' %}">Home</a>
-<h1>Hello {{name}}</h1>
-
-{% if request.user.is_authenticated %}
-    <div class="logout" style="margin-top:20px;">
-        <a href="{% url 'logout' %}">Logout</a>
-    </div>
-    <div class="update-profile" style="margin-top:20px;">
-        <a href="{% url 'updateprofile' %}">Update Profile</a>
-    </div>
-    <div class="change-with" style="margin-top:20px;">
-        <a href="{% url 'changewith' %}">Change Password with Old Password</a>
-    </div>
-    <div class="change-without" style="margin-top:20px;">
-        <a href="{% url 'changewithout' %}">Change Password without Old Password</a>
-    </div>
+{% if messages %}
+    {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show" {% endif %}  role="alert">
+            <p>{{ message }}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
 {% endif %}
+
+<div class="container">
+    
+    <h1>Hello! {{request.user.first_name}} {{request.user.last_name}}</h1>
+    {% if request.user.is_authenticated %}
+        <div class="update-profile" style="margin-top:20px;">
+            <span>Update Profile</span>
+            <a href="{% url 'updateprofile' %}"> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="change-with" style="margin-top:20px;">
+            <span> Change Password with Old Password</span>
+            <a href="{% url 'changewith' %}"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a>
+        </div>
+        <div class="change-with" style="margin-top:20px;">
+            <span> Change Password without Old Password</span>
+            <a href="{% url 'changewithout' %}"> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a>
+        </div>
+    {% endif %}
+</div>
 {% endblock content %}

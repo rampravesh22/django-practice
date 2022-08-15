@@ -20,13 +20,5 @@
         {% endfor %}
         <input type="submit" value="Login" class="btn btn-primary">
     </form>
-    <div class="messages">
-        {% if messages %}
-        {% for message in messages %}
-        <p {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</p>
-        {% endfor %}
-        {% endif %}
-    </div>
-    <br><br>
 </div>
 {% endblock content %}

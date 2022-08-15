@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from core.forms import SignUp, UpdateUserForm, LoginForm
+from core.forms import SignUp, UpdateUserForm, LoginForm,ChangeWithOld,ChangeWithoutOld
 from django.contrib import messages
+from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib import messages
@@ -78,7 +79,7 @@ def change_pass_with_old_pass(request):
     if request.user.is_authenticated:
 
         if request.method == 'POST':
-            form = PasswordChangeForm(user=request.user, data=request.POST)
+            form = ChangeWithOld(user=request.user, data=request.POST)
             if form.is_valid():
                 form.save()
                 update_session_auth_hash(request, form.user)
@@ -86,9 +87,10 @@ def change_pass_with_old_pass(request):
 					If we dont use this method then after changeing the password,
 					it will send to the login page and logout from the session                                                          
                     because it will create new session so we have to update the session """
-                return redirect("/profile/")
+                messages.success(request, "Your password has been updated")
+                return redirect(request.META.get('HTTP_REFERER'))
         else:
-            form = PasswordChangeForm(user=request.user)
+            form = ChangeWithOld(user=request.user)
 
         context = {
             'current':"Change Password with old Password",
@@ -102,7 +104,7 @@ def change_pass_with_old_pass(request):
 def change_pass_without_old_pass(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            form = SetPasswordForm(user=request.user, data=request.POST)
+            form = ChangeWithoutOld(user=request.user, data=request.POST)
             if form.is_valid():
                 form.save()
                 update_session_auth_hash(request, form.user)
@@ -110,9 +112,10 @@ def change_pass_without_old_pass(request):
 					If we dont use this method then after changeing the password,
 					it will send to the login page and logout from the session                                                          
                     because it will create new session so we have to update the session """
-                return redirect("/profile/")
+                messages.success(request, "Your password has been updated")
+                return redirect(request.META.get('HTTP_REFERER'))
         else:
-            form = SetPasswordForm(user=request.user)
+            form = ChangeWithoutOld(user=request.user)
 
         context = {
             'current':"Change password without old password",

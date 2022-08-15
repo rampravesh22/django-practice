@@ -49,11 +49,19 @@ input:focus {
     outline: none !important;
     border: none !important;
 }
+a:active{
+    background-color: red !important;
+    box-shadow: none !important;
+}
+a:link{
+    color: red;
+}
+
 a:focus {
     outline: none !important;
-    border: 1px solid !important;
+    border: none !important;
     /* outline: solid 2px black !important; */
-    box-shadow: 0 0 3px 1px  dodgerblue !important;
+    box-shadow: 0 0 3px 1px  rgb(212, 216, 221) !important;
 }
 select:focus {
     border: 1px solid !important;
@@ -73,3 +81,5 @@ input:focus{
     /* outline: solid 2px black !important; */
     box-shadow: 0 0 3px 1px  rgb(11, 255, 109) !important;
 }
+
+
